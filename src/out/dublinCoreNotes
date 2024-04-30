@@ -1,0 +1,7 @@
+
+xml.xsd, xlink.xsd and dc.xsd downloaded from Uni Koeln
+(http://www.ukoln.ac.uk/metadata/dcmi/dcxml/xmls/xml.xsd etc)
+
+Minor changes to remove error messages, enabling xmllint to compile schemas.
+
+dc version of dreq schema uses defines the "prologue" element to contain a Dublin Core "elementsGroup".
