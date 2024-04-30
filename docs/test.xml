@@ -1,0 +1,4 @@
+<document xmlns="urn:w3id.org:cmip6.dreq.dreq:a" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:pav="http://purl.org/pav/2.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="out/dreqSchema.xsd">
+<test id="rqvg" label="requestVarGroup" title="3.1 Request variable group: a collection of request variables" uid="SECTION:requestVarGroup" useClass="vocab" x="2. 3. 4."/>
+</document>
+

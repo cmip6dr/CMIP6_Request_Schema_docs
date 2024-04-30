@@ -1,0 +1,114 @@
+## vsf=v
+vocab institute; Institute; cmip.drv.001; def; 0; 1; Yes
+ - url {Home page}
+ - isni {International Standard Name Identifier (ISO 27729)}
+ - description
+ - uid
+## vsf=v
+vocab model; Model; cmip.drv.002; def; 0; 1; Yes
+ - description; url; altUrl; source {List of major model components}
+ - uid
+## vsf=v
+vocab physicsvers; Physics Version; cmip.drv.003; def; 0; 1; Yes
+ - description
+ - uid
+## vsf=v
+vocab initialisationmethod; Initialisation Method; cmip.drv.004; def; 0; 1; Yes
+ - description
+ - uid
+## vsf=-
+vocab modelComp; Model Components; cmip.drv.004; def; 0; 1; Yes
+ - componentType; sizeH; sizeV
+ - uid
+## vsf=v
+vocab activity; Coordinating activity; cmip.drv.004; def; 0; 1; Yes
+ - url
+ - status {Status and role within the CMIP6 process}
+ - uid
+ - project {Project which is sponsoring the CMIP6 contribution, if applicable}
+## vsf=f
+vocab product; Data product; cmip.drv.004; def; 0; 1; Yes
+ - uid
+## vsf=v
+vocab experiment; Numerical Experiment; cmip.drv.004; def; 0; 1; Yes
+ - altLabel; description; url; sponsor
+ - uid
+## vsf=s
+vocab frequency; Temporal frequency of data values; cmip.drv.004; def; 0; 1; Yes
+ - iso
+ - uid
+ - isClimatology {True if term is a climatology label} [xs:boolean]
+## vsf=f
+vocab realm; Modeling realm; cmip.drv.004; def; 0; 1; Yes
+ - uid
+## vsf=s
+vocab grid; Native grid; cmip.drv.004; def; 0; 1; Yes
+ - uid
+## vsf=s
+vocab dimensions; MIP table variable dimensions; cmip.drv.008; an; 0; 1; Yes
+ - altLabel; sn; size [xs:integer]
+ - uid
+## vsf=v
+vocab forcings; Forcing; cmip.drv.004; def; 0; 1; Yes
+ - uid
+## vsf=s
+vocab table; Data specification table; cmip.drv.004; def; 0; 1; Yes
+ - description; comment; frequency
+ - uid
+## vsf=s
+vocab cref; Coordinate Reference; cmip.drv.004; def; 0; 1; Yes
+ - label
+ - uid
+## vsf=f
+vocab areaType; CMIP Area Type; cmip.drv.004; def; 0; 1; Yes
+ - inCF
+ - uid
+## vsf=s
+vocab timeSlice; Time slices used in data request; cmip.drv.004; def; 0; 1; Yes
+ - uid
+ - type
+ - start
+ - end
+ - step
+ - sliceLen
+ - nyears
+ - description
+ - child
+ - items
+vocab modelFamily; Family of model; cmip.drv.004; def; 0; 1; Yes
+ - uid
+vocab priority; Variable priority; cmip.drv.004; int; 0; 1; Yes
+ - description
+ - uid
+vocab qcLevel; Quality control level; cmip.drv.004; int; 0; 1; Yes
+ - uid
+vocab complianceCode; Data specification compliance codes; cmip.drv.004; def; 0; 1; Yes
+ - uid
+vocab glossary; Glossary; cmip.drv.004; def; 0; 1; No
+ - fullName; description; url
+ - uid
+vocab modelCompType; Model Component Types/Categories [redundant with *Native Grid*]; cmip.drv.004; def; 0; 1; Yes
+ - uid
+vocab modelType; Class of model; cmip.drv.004; def; 0; 1; Yes
+ - uid
+vocab index; Index of vocabularies; xxx; def; 0; 1; Yes
+ - table; title; description
+ - uid
+vocab cmorDimAttr; CMOR Dimension Attributes; cmip.drv.004; und; 0; 1; Yes
+ - description
+ - uid
+ - CMORattr {Corresponding label in the CMOR MIP tables, if different}
+vocab processingOptions; Processing steps required; cmip.drv.004; an; 0; 1; Yes
+ - description
+ - uid
+vocab coordinateReference; Processing steps required; cmip.drv.004; an; 0; 1; Yes
+ - title
+ - ogc_wkt
+ - url
+ - uid
+vocab modelConfig; Model configuration options; cmip.drv.004; an; 0; 1; Yes
+ - title
+ - MIPs
+ - usage
+ - type
+ - range  {Range of valid values, e.g. xs:boolean}

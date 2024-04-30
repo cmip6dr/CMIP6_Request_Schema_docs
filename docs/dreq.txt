@@ -1,0 +1,98 @@
+## 
+vocab experiment; Experiments; cmip.drv.001; def; 0; 1; No
+ - uuid {Record identifier} <recordId>
+ - description {Description} <freeText>
+ - egid  {Identifier for experiment group} <internalLink>
+ - mip {MIP defining experiment}
+ - mcfg {Model category}
+ - tier {Tier of experiment}
+ - nstart {Number of start dates} [xs:integer]
+ - starty
+ - endy
+ - yps {Years per simulation} [xs:integer]
+ - ensz {Ensemble size} [xs:integer]
+ - ntot {Total number of years} [xs:integer]
+ - comment {Comment}
+vocab exptgroup; Experiment Group; cmip.drv.001; def; 0; 1; No
+ - uuid {Record identifier} <recordId>
+ - tierMin {Minimum tier of experiments in group}  [xs:integer]
+ - ntot {Total number of years} [xs:integer]
+vocab objective; Scientific objectives; cmip.drv.001; def; 0; 1; No
+ - uuid {Record identifier} <recordId>
+ - description {Description} <freeText>
+ - title {Long name}
+ - mip {Endorsed MIP}
+vocab objectiveLink; Link between scientific objectives and requests; cmip.drv.001; def; 0; 1; No
+ - uuid {Record identifier} <recordId>
+ - oid  {Identifier for a scientific objective} <internalLink|objective>
+ - rid  {Identifier for a request link} <internalLink|requestLink>
+vocab var; MIP Variable; cmip.drv.001; def; 0; 1; No
+ - sn {CF Standard Name} <externalTextRef>; units {Units}; description; 
+ - procnote {Processing notes} <list>
+ - procComment {Processing comments} <freeText>
+ - prov {Provenance} <freeText>
+ - uuid {Record identifier} <recordId>
+##  label==var
+vocab ovar; MIP Output Variable; cmip.drv.001; def; 1; 1; No
+ - uuid <recordId>
+ - title {Long name}
+ - comment {Description} <freeText>
+ - deflate_level; shuffle; ok_max_mean_abs; flag_meanings; type; ok_min_mean_abs; 
+ - sn {CF Standard Name} <externalTextRef>
+ - deflate; valid_min; cell_methods; flag_values; cell_measures; out_name; modeling_realm; units; cell_methods_xx; valid_max; positive; mipTable; dimensions;
+ - vid {Identifier for MIP Variable} <internalLink|var>
+ - frequency {Frequency}  <drsVocab>
+ - gpid {Variable group/table} <internalLink>
+ - rowIndex {Row index of entry in source sheet} [xs:integer]
+ - priority {Priority} [xs:integer]
+## 
+vocab groupItem; Output Group Item; cmip.drv.001; def; 2; 1; No
+ - group;  
+ - table {Source table or 'new' for new variables}
+ - freq {Frequency}
+ - descriptionEx
+ - shape {Shape of variable (dimensions)}
+ - levels {Number of vertical levels}
+ - tstyle; mask
+ - priority [xs:integer]
+ - mip; uuid <recordId>; new; 
+ - gpid {Identifier for request link} <internalLink>; vkey;
+ - vid {Identifier for MIP Variable} <internalLink|var>
+## 
+vocab revisedTabItem; Revised Table Item; cmip.drv.001; def; 3; 1; No
+ - table
+ - mip {Endorsed MIP requesting the variable}
+ - uuid <recordId>
+ - priority  [xs:integer]
+ - vid {Identifier for MIP Output Variable} <internalLink|ovar>
+ - vgid {Identifier for Variable Group} <internalLink|requestVarGroup>
+##  
+vocab tableSection; CMOR Table Sections; cmip.drv.001; def; 1; 1; No
+ - uuid <recordId>
+ - gpid {Identifier for CMOR Tables} <internalLink|requestVarGroup>
+ - mip {Project}
+ - ref
+ - refNote
+##
+vocab requestVarGroup; Request link: linking a set of variables; cmip.drv.001; def; 3; 1; Yes
+ - uuid <recordId>
+ - mip {Endorsed MIP requesting the data}
+ - ref; refNote
+vocab requestLink; Request link: linking a set of variables and a set of experiments.; cmip.drv.001; def; 4; 1; No
+ - uuid <recordId>; mip; tab; objective; grid; gridreq; comment; ref; refNote; 
+ - refid {reference to a request Variable Group} <internalLink>
+ - opt {option for selecting a subset of variables}
+ - opar {parameter associated with *opt*}
+vocab requestItem; Request Item: specifying the number of years for an experiment; cmip.drv.001; def; 5; 1; No
+ - uuid <recordId>; mip; tab; expt; 
+ - rlid {Identifier of corresponding requestLink} <internalLink>
+ - ny [xs:integer]
+vocab remarks; Remarks about other items; cmip.drv.001; def; 10; 1; No
+ - uuid <recordId>; 
+ - tid  {Target identifier: the record ID of the item this refers to.} <internalLink>
+ - tattr {Target attribute: an attribute of the target item, or 'ALL'}
+ - description {Free text remarks -- unless there are specific restrictions associated with the class attribute of this remark}
+ - class {Different classes of remark support a range of specialised usages: free (a free text comment), modelTypeReq (a model type requirement), modelTypeExcl (a model type exclusion), varAlt (an alternative variable that my be used instead of this one), varSup (an alternative variable which, if selected makes this one redundant), attChange (a change in the value of an attribute -- old value provided in 'techNote').}
+ - qid {Identifier required for classes modelTypeReq, modelTypeExcl, varAlt, varSup. For the first two classes, the identifier points to a model type specification, for the last two it points to an output variable specification.}
+ - techNote {Optional additional machine readable content (though not restricted by the schema)}
+ - prov {Provenance}

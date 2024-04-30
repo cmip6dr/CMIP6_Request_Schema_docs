@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Edited by XMLSpy® -->
+<xsl:stylesheet version="1.0"
+xmlns:xs="http://www.w3.org/2001/XMLSchema"
+xmlns:a="urn:w3id.org:cmip6.dreq.framework:a"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+xmlns:xd="http://www.pnp-software.com/XSLTdoc">
+<xsl:output method="xml" omit-xml-declaration="no" indent="yes"/>
+<xsl:strip-space  elements="*"/>
+
+<xd:doc mode="main">
+  <xd:short>Mode main generates the declaration of the main document element</xd:short>
+  <xd:detail></xd:detail>
+</xd:doc>
+<xd:doc mode="header">
+  <xd:short>Mode header generates type declarations</xd:short>
+  <xd:detail>Detail for header mode</xd:detail>
+</xd:doc>
+<xd:doc mode="#default">
+  <xd:short>Default mode is used for general bits and pieces</xd:short>
+  <xd:detail>Detail for default mode</xd:detail>
+</xd:doc>
+<xd:doc>
+  <xd:short>The root template element ....</xd:short>
+  <xd:detail>
+    And here comes a <b>more detailed</b> 
+    description showed only in the detailed view of the documentation.
+  </xd:detail>
+</xd:doc>
+
+<xsl:template match="a:defDoc">
+<xs:schema targetNamespace="urn:w3id.org:cmip6.dreq.dreq:a"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:pav="http://purl.org/pav/2.3"
+xmlns:aa="urn:w3id.org:cmip6.dreq.dreq:a" xmlns:xs="http://www.w3.org/2001/XMLSchema"  elementFormDefault="qualified"><xsl:text>&#xa;</xsl:text>
+<xs:import namespace="http://purl.org/dc/elements/1.1/" schemaLocation="dc1.xsd" /><xsl:text>&#xa;</xsl:text>
+<xs:import namespace="http://purl.org/pav/2.3" schemaLocation="pav.xsd"/><xsl:text>&#xa;</xsl:text>
+
+<!-- generic type definitions -->
+  <xs:annotation>
+    <xs:appinfo>W3Schools Note</xs:appinfo>
+    <xs:documentation xml:lang="en">
+       Some specialised string types
+    </xs:documentation>
+  </xs:annotation><xsl:text>&#xa;</xsl:text>
+
+<!-- Fortran variable types --><xsl:text>&#xa;</xsl:text>
+  <xs:simpleType name="st__fortranType"><xsl:text>&#xa;</xsl:text>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="integer"/>
+          <xs:enumeration value="real"/>
+          <xs:enumeration value="double"/>
+          <xs:enumeration value="character"/>
+        </xs:restriction>
+  </xs:simpleType><xsl:text>&#xa;</xsl:text>
+
+
+<!-- Time slice types  --><xsl:text>&#xa;</xsl:text>
+  <xs:simpleType name="st__sliceType"><xsl:text>&#xa;</xsl:text>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="relativeRange"/>
+          <xs:enumeration value="simpleRange"/>
+          <xs:enumeration value="dayList"/>
+          <xs:enumeration value="yearList"/>
+          <xs:enumeration value="sliceList"/>
+          <xs:enumeration value="branchedYears"/>
+          <xs:enumeration value="monthlyClimatology"/>
+          <xs:enumeration value="siblingBranchClimatology"/>
+          <xs:enumeration value="monthlyClimatologyFinal"/>
+        </xs:restriction>
+  </xs:simpleType><xsl:text>&#xa;</xsl:text>
+
+
+<!-- Model configuration categories --><xsl:text>&#xa;</xsl:text>
+  <xs:simpleType name="st__configurationType"><xsl:text>&#xa;</xsl:text>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="size"/>
+          <xs:enumeration value="category"/>
+          <xs:enumeration value="ioOption"/>
+          <xs:enumeration value="capability"/>
+        </xs:restriction>
+  </xs:simpleType><xsl:text>&#xa;</xsl:text>
+
+  <xs:simpleType name="st__uid">
+    <xs:restriction base="xs:string">
+    <xs:pattern value="([a-zA-Z0-9:_.+-])+"/></xs:restriction>
+  </xs:simpleType><xsl:text>&#xa;</xsl:text>
+
+  <xs:simpleType name="st__attLabel_def">
+    <xs:restriction base="xs:string">
+    <xs:pattern value="([a-zA-Z0-9-])+"/></xs:restriction>
+  </xs:simpleType><xsl:text>&#xa;</xsl:text>
+
+  <xs:simpleType name="st__attLabel_und">
+    <xs:restriction base="xs:string">
+    <xs:pattern value="([a-zA-Z0-9_])+"/></xs:restriction>
+  </xs:simpleType><xsl:text>&#xa;</xsl:text>
+
+  <xs:simpleType name="st__attLabel_int">
+    <xs:restriction base="xs:integer"/>
+  </xs:simpleType><xsl:text>&#xa;</xsl:text>
+
+  <xs:simpleType name="st__attLabel_an">
+    <xs:restriction base="xs:string">
+    <xs:pattern value="([a-zA-Z0-9])+"/></xs:restriction>
+  </xs:simpleType><xsl:text>&#xa;</xsl:text>
+
+<xs:simpleType name="st__stringList">
+<xs:restriction base="aa:base__stringList">
+     <xs:minLength value="0"/>
+</xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="base__stringList">
+    <xs:list itemType="xs:string"/>
+</xs:simpleType><xsl:text>&#xa;</xsl:text>
+
+<xs:simpleType name="st__integerList">
+<xs:restriction base="aa:base__integerList">
+     <xs:minLength value="0"/>
+</xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="base__integerList">
+    <xs:list itemType="xs:integer"/>
+</xs:simpleType><xsl:text>&#xa;</xsl:text>
+
+<xs:simpleType name="st__integerListMonInc">
+  <xs:restriction base="aa:st__integerList" />
+</xs:simpleType><xsl:text>&#xa;</xsl:text>
+
+<xs:simpleType name="st__floatList">
+<xs:restriction base="aa:base__floatList">
+     <xs:minLength value="0"/>
+</xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="base__floatList">
+    <xs:list itemType="xs:float"/>
+</xs:simpleType><xsl:text>&#xa;</xsl:text>
+
+  <xs:complexType name="ct__info" mixed="true">
+    <xs:attribute name="srcType" type="xs:string"/>
+    <xs:attribute name="srcRef" type="xs:string"/>
+  </xs:complexType>
+
+<!-- create simple and complex type definitions -->
+     <xsl:apply-templates mode="header"/>
+
+<!-- main content produced by this section -->
+  <xs:annotation>
+    <xs:appinfo>W3Schools Note</xs:appinfo>
+    <xs:documentation xml:lang="en">
+       This schema is automatically generated by xsltproc.
+    </xs:documentation>
+  </xs:annotation><xsl:text>&#xa;</xsl:text>
+
+  <xs:element name="document"><xs:complexType><xs:all>
+    <xs:element name="prologue">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:group ref="dc:elementsGroup" maxOccurs="20"/>
+            <xs:group ref="pav:elementsGroup" maxOccurs="20"/>
+          </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="main">
+      <xs:complexType>
+        <xs:all><xsl:text>&#xa;</xsl:text>
+           <xsl:apply-templates mode="main"/>  
+        </xs:all>
+      </xs:complexType><xsl:text>&#xa;</xsl:text>
+    </xs:element><xsl:text>&#xa;</xsl:text>
+    <xs:element name="annex">
+      <xs:complexType>
+        <xs:all><xsl:text>&#xa;</xsl:text>
+           <xsl:apply-templates mode="annex"/>  
+        </xs:all>
+      </xs:complexType><xsl:text>&#xa;</xsl:text>
+    </xs:element><xsl:text>&#xa;</xsl:text>
+  </xs:all>
+  </xs:complexType>
+      <xs:unique name="uniqueIdentifierConstraint">
+        <xs:annotation>
+          <xs:appinfo>W3Schools Note</xs:appinfo>
+        <xs:documentation xml:lang="en">
+       The uniqueIdentifierConstraint imposes the condition that the uid attribute on "item" elements should have a unique value.
+        </xs:documentation>
+        </xs:annotation><xsl:text>&#xa;</xsl:text>
+          <xs:selector xpath=".//aa:item"/>
+          <xs:field xpath="@uid"/>
+      </xs:unique><xsl:text>&#xa;</xsl:text>
+  </xs:element>
+
+</xs:schema>
+</xsl:template>
+
+<!-- TEMPLATE: definition of vocab elements -->
+<xd:doc>
+  <xd:short>The vocab[main] template is applied once for each vocabulary list.</xd:short>
+  <xd:detail>
+  There is a section with mode="main" to generate the xs:element declarations,
+and a separate section to generate the associcated complexType declarations.
+  </xd:detail>
+</xd:doc>
+<xsl:template match="a:table" mode="main">
+   <xsl:comment>[applying elem main] <xsl:value-of select="@label"/></xsl:comment><xsl:text>&#xa;</xsl:text>
+   <xs:element>
+     <xsl:attribute name="name"><xsl:value-of select="@label"/></xsl:attribute>
+     <xsl:attribute name="type">aa:ct__<xsl:value-of select="@label"/></xsl:attribute>
+   </xs:element><xsl:text>&#xa;</xsl:text>
+</xsl:template>
+
+<xsl:template match="a:annextable" mode="annex">
+   <xsl:comment>[applying elem main] <xsl:value-of select="@label"/></xsl:comment><xsl:text>&#xa;</xsl:text>
+   <xs:element>
+     <xsl:attribute name="name"><xsl:value-of select="@label"/></xsl:attribute>
+     <xsl:attribute name="type">aa:ct__<xsl:value-of select="@label"/></xsl:attribute>
+   </xs:element><xsl:text>&#xa;</xsl:text>
+</xsl:template>
+
+<!-- TEMPLATE: definition of vocab type declarations -->
+<xd:doc>
+  <xd:short>The vocab[header] template: complexType declarations </xd:short>
+  <xd:detail>
+     The header mode generates type declarations.
+  </xd:detail>
+</xd:doc>
+<xsl:template match="a:table|a:annextable" mode="header">
+     <xsl:comment>Auto-generated vocabulary complexType declarations/></xsl:comment><xsl:text>&#xa;</xsl:text>
+     <xs:annotation>
+       <xs:appinfo>W3Schools Note</xs:appinfo>
+       <xs:documentation xml:lang="en">
+          <xsl:value-of select="@label"/>: Complex Type declaration
+       </xs:documentation>
+     </xs:annotation><xsl:text>&#xa;</xsl:text>
+     <xs:complexType>
+        <xsl:attribute name="name">ct__<xsl:value-of select="@label"/></xsl:attribute><xsl:text>&#xa;</xsl:text>
+        <xs:sequence>
+           <xs:element name="item" maxOccurs="12000">
+           <xsl:attribute name="type">aa:ct__<xsl:value-of select="@label"/>_vocabItem</xsl:attribute>
+           </xs:element>
+        </xs:sequence><xsl:text>&#xa;</xsl:text>
+        <xs:attribute name="label" type="xs:string">
+            <xsl:attribute name="fixed"><xsl:value-of select="@label"/></xsl:attribute>
+        </xs:attribute><xsl:text>&#xa;</xsl:text>
+        <xs:attribute name="title" type="xs:string">
+            <xsl:attribute name="fixed"><xsl:value-of select="@title"/></xsl:attribute>
+        </xs:attribute><xsl:text>&#xa;</xsl:text>
+        <xs:attribute name="id" type="xs:string">
+            <xsl:attribute name="fixed"><xsl:value-of select="@id"/></xsl:attribute>
+        </xs:attribute><xsl:text>&#xa;</xsl:text>
+        <xs:attribute name="useClass" fixed="vocab"/><xsl:text>&#xa;</xsl:text>
+        <xs:attribute name="uid" type="xs:string"/><xsl:text>&#xa;</xsl:text>
+    </xs:complexType><xsl:text>&#xa;</xsl:text>
+
+<!-- type declaration for item element -->
+     <xs:annotation>
+          <xs:appinfo>Attribute annotation</xs:appinfo>
+          <xs:documentation xml:lang="en">
+              <xsl:apply-templates mode="annotate-attr"/>
+          </xs:documentation>
+     </xs:annotation><xsl:text>&#xa;</xsl:text>
+
+     <xs:complexType>
+        <xsl:attribute name="name">ct__<xsl:value-of select="@label"/>_vocabItem</xsl:attribute><xsl:text>&#xa;</xsl:text>
+        <xs:attribute name="id" type="xs:string"/><xsl:text>&#xa;</xsl:text>
+        <xs:attribute name="label">
+            <xsl:attribute name="type">aa:st__attLabel_<xsl:value-of select="@itemLabelMode"/></xsl:attribute>
+        </xs:attribute><xsl:text>&#xa;</xsl:text>
+        <xs:attribute name="title" type="xs:string"/>
+<!-- apply templates to pick up list of attributes of each item -->
+            <xsl:apply-templates mode="attr"/>
+        <xsl:text>&#xa;</xsl:text>
+     </xs:complexType>
+</xsl:template>
+
+<xd:doc>
+  <xd:short>rowAttribute: specifications of list item attributes</xd:short>
+  <xd:detail>
+  The rowAttribute template constructs the specifications of attributes in list items.
+  </xd:detail>
+</xd:doc>
+<xsl:template match="a:rowAttribute" mode="attr">
+   <xsl:if test="@label!='label' and @label != 'title'">
+     <xs:attribute name="id" type="xs:string">
+       <xsl:attribute name="name"><xsl:value-of select="@label"/></xsl:attribute>
+       <xsl:choose>
+         <xsl:when test="@type">
+            <xsl:attribute name="type"><xsl:value-of select="@type"/></xsl:attribute>
+         </xsl:when>
+       </xsl:choose>
+       <xsl:choose>
+         <xsl:when test="@required = 'true'">
+            <xsl:attribute name="use">required</xsl:attribute>
+         </xsl:when>
+       </xsl:choose>
+     </xs:attribute><xsl:text>&#xa;</xsl:text>
+   </xsl:if>
+</xsl:template>
+
+<xsl:template match="a:rowAttribute" mode="annotate-attr">
+   <xsl:value-of select="@label"/>;
+   <xsl:choose>
+     <xsl:when test="@type">
+        <xsl:value-of select="@type"/>
+     </xsl:when>
+   </xsl:choose>
+   <xsl:choose>
+     <xsl:when test="@title">
+        <xsl:value-of select="@title"/>
+     </xsl:when>
+   </xsl:choose>
+</xsl:template>
+
+</xsl:stylesheet>
